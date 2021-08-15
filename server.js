@@ -9,15 +9,14 @@ const app = express();
 
 app.use(logger('dev'));
 
-const databaseUrl = 'fitnessTracker';
-const collections = ['workouts'];
-const db = mongojs(databaseUrl, collections);
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static('public'));
 
+const databaseUrl = 'fitnessTracker';
+const collections = ['workouts'];
+const db = mongojs(databaseUrl, collections);
 db.on('error', (error) => {
   console.log('Database Error:', error);
 });
