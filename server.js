@@ -1,10 +1,11 @@
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const mongojs = require('mongojs');
 
 const PORT = process.env.PORT || 3000;
 
-const db = require('./models');
+const Workout = require('./models/workout');
 
 const app = express();
 
@@ -28,7 +29,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
 });
 
-app.get('/');
+// app.get('/');
 
 // ? Port is listening //
 app.listen(PORT, () => {
