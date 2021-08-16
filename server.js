@@ -23,6 +23,14 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
 });
 
+app.get('/exercise', (req, res) => {
+  if (error) {
+    res.send(error);
+  } else {
+    res.sendFile('exercise');
+  }
+});
+
 app.get('/api/workouts', (req, res) => {
   db.Workout.findOne((error, data) => {
     if (error) {
