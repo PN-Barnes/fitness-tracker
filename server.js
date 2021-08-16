@@ -25,11 +25,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
 });
 
 app.get('/exercise', (req, res) => {
-  // if (error) {
-  //   res.send(error);
-  // } else {
   res.sendFile(path.join(__dirname, './public/exercise.html'));
-  // }
 });
 
 app.get('/stats', (req, res) => {
