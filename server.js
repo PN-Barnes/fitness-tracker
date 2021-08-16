@@ -2,6 +2,7 @@ const express = require('express');
 const mongojs = require('mongojs');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
@@ -24,12 +25,18 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
 });
 
 app.get('/exercise', (req, res) => {
-  if (error) {
-    res.send(error);
-  } else {
-    res.sendFile('/exercise.html');
-  }
+  // if (error) {
+  //   res.send(error);
+  // } else {
+  res.sendFile(path.join(__dirname, './public/exercise.html'));
+  // }
 });
+
+app.get('/stats', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/stats.html'));
+});
+
+app.get('/stats', (req, res) => {});
 
 app.get('/api/workouts', (req, res) => {
   db.Workout.findOne((error, data) => {
