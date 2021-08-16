@@ -60,16 +60,16 @@ app.get('/api/workouts/range', (req, res) => {
     });
 });
 
-// app.post('/api/workouts', (req, res) => {
-//   Workout.create(req.body)
-//     .then((dbWorkout) => {
-//       res.json(dbWorkout);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//       console.log('Successful');
-//     });
-// });
+app.post('/api/workouts', (req, res) => {
+  const newExercise = req.body;
+  db.Workout.insert(newExercise, (error, data) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(data);
+    }
+  });
+});
 
 // ? Port is listening //
 app.listen(PORT, () => {
