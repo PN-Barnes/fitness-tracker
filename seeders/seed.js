@@ -1,6 +1,11 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const mongojs = require('mongojs');
 
-mongoose.connect('mongodb://localhost/workout', {
+const databaseUrl = 'fitnessTracker';
+const collections = ['Workout'];
+const db = mongojs(databaseUrl, collections);
+
+mongoose.connect('mongodb://localhost/fitnessTracker', {
   useNewUrlParser: true,
   useFindAndModify: false,
 });

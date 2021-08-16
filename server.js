@@ -16,14 +16,45 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const databaseUrl = 'fitnessTracker';
-const collections = ['workouts'];
+const collections = ['Workout'];
 const db = mongojs(databaseUrl, collections);
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
 });
 
-app.get('/');
+app.get('/api/workouts', (req, res) => {
+  db.Workout.find().sort({ day: 1 }, (error, data) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+app.get('/api/workouts/range', (req, res) => {
+  db.Workout.find()
+    .sort({ day: 1 })
+    .limit(7, (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.json(data);
+      }
+    });
+});
+
+// app.post('/api/workouts', (req, res) => {
+//   Workout.create(req.body)
+//     .then((dbWorkout) => {
+//       res.json(dbWorkout);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//       console.log('Successful');
+//     });
+// });
 
 // ? Port is listening //
 app.listen(PORT, () => {
