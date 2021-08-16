@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
 });
 
 app.get('/api/workouts', (req, res) => {
-  db.Workout.find().sort({ day: 1 }, (error, data) => {
+  db.Workout.findOne((error, data) => {
     if (error) {
       res.send(error);
     } else {
