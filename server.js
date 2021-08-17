@@ -67,6 +67,17 @@ app.post('/api/workouts', (req, res) => {
   });
 });
 
+// app.put('/api/workouts/:id', (req,res) => {
+//   db.Workout.update({
+//     id: mongojs.ObjectId(params.id)
+//   },
+//   {
+//     $set: {
+//       req.body
+//     }
+//   })
+// })
+
 // ? Port is listening //
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
