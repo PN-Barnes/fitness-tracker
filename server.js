@@ -32,20 +32,19 @@ app.get('/stats', (req, res) => {
   res.sendFile(path.join(__dirname, './public/stats.html'));
 });
 
-app.get('/stats', (req, res) => {});
-
 app.get('/api/workouts', (req, res) => {
-  db.Workout.findOne((error, data) => {
+  db.Workout.find({}, (error, data) => {
     if (error) {
       res.send(error);
     } else {
+      console.log(data);
       res.json(data);
     }
   });
 });
 
 app.get('/api/workouts/range', (req, res) => {
-  db.Workout.find()
+  db.Workout.find({})
     .sort({ day: 1 })
     .limit(7, (error, data) => {
       if (error) {

@@ -22,6 +22,7 @@ function generatePalette() {
 }
 
 function populateChart(data) {
+  console.log(data);
   let durations = data.map(({ totalDuration }) => totalDuration);
   let pounds = calculateTotalWeight(data);
   let workouts = workoutNames(data);
