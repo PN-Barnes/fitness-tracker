@@ -67,21 +67,19 @@ app.post('/api/workouts', (req, res) => {
 app.put('/api/workouts/:id', (req, res) => {
   const body = req.body;
   if (body.workoutType === 'resistance') {
-    Workout.findOneAndUpdate(
+    Workout.updateOne(
       { _id: req.params.id },
       {
-        $set: {
-          exercises: [
-            {
-              workoutType: body.workoutType,
-              exerciseName: body.exerciseName,
-              duration: body.duration,
-              weight: body.weight,
-              reps: body.reps,
-              sets: body.sets,
-            },
-          ],
-        },
+        exercises: [
+          {
+            workoutType: body.workoutType,
+            exerciseName: body.exerciseName,
+            duration: body.duration,
+            weight: body.weight,
+            reps: body.reps,
+            sets: body.sets,
+          },
+        ],
       }
     )
       .then((exercise) => {
@@ -91,7 +89,7 @@ app.put('/api/workouts/:id', (req, res) => {
         res.json(err);
       });
   } else {
-    Workout.findOneAndUpdate(
+    Workout.updateOne(
       { _id: req.params.id },
       {
         $set: {
