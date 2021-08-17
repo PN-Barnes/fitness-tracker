@@ -64,16 +64,17 @@ app.post('/api/workouts', (req, res) => {
     });
 });
 
-// app.put('/api/workouts/:id', (req,res) => {
-//   db.Workout.update({
-//     id: mongojs.ObjectId(params.id)
-//   },
-//   {
-//     $set: {
-//       req.body
-//     }
-//   })
-// })
+app.post('/api/workouts/:id', ({ body }, res) => {
+  const exercise = body;
+  console.log(exercise);
+  Workout.save(exercise, (error, saved) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(saved);
+    }
+  });
+});
 
 // ? Port is listening //
 app.listen(PORT, () => {
