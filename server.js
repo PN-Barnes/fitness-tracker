@@ -6,6 +6,7 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 
 const { Workout } = require('./models');
+const { findOneAndUpdate } = require('./models/workout');
 const app = express();
 
 app.use(logger('dev'));
@@ -54,8 +55,7 @@ app.get('/api/workouts/range', (req, res) => {
 });
 
 app.post('/api/workouts', (req, res) => {
-  const newExercise = req.body;
-  Workout.create(newExercise)
+  Workout.create(req.body)
     .then((exercise) => {
       res.json(exercise);
     })
@@ -64,18 +64,65 @@ app.post('/api/workouts', (req, res) => {
     });
 });
 
-app.post('/api/workouts/:id', ({ body }, res) => {
-  const exercise = body;
-  console.log(exercise);
-  Workout.save(exercise, (error, saved) => {
-    if (error) {
-      console.log(error);
-    } else {
-      res.send(saved);
-    }
-  });
+app.put('/api/workouts/:id', (req, res) => {
+  const body = req.body;
+  if (body.workoutType === 'resistance') {
+    Workout.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          exercises: [
+            {
+              workoutType: body.workoutType,
+              exerciseName: body.exerciseName,
+              duration: body.duration,
+              weight: body.weight,
+              reps: body.reps,
+              sets: body.sets,
+            },
+          ],
+        },
+      }
+    )
+      .then((exercise) => {
+        res.json(exercise, { message: 'Succesful update' });
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  } else {
+    Workout.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          workoutType: body.workoutType,
+          exerciseName: body.exerciseName,
+          duration: body.duration,
+          distance: body.distance,
+        },
+      }
+    )
+      .then((exercise) => {
+        res.json(exercise, { message: 'Succesful update' });
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
+  res.json({ message: 'successful Put route' });
 });
 
+app.delete('/api/workouts/:id', (req, res) => {
+  const id = req.params.id;
+  Workout.remove({ _id: id })
+    .then((result) => {
+      res.json(result, { message: 'successful delete' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
+});
 // ? Port is listening //
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);

@@ -12,7 +12,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Bicep Curl',
+        exerciseName: 'Bicep Curl',
         duration: 20,
         weight: 100,
         reps: 10,
@@ -25,7 +25,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Lateral Pull',
+        exerciseName: 'Lateral Pull',
         duration: 20,
         weight: 300,
         reps: 10,
@@ -38,7 +38,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Push Press',
+        exerciseName: 'Push Press',
         duration: 25,
         weight: 185,
         reps: 8,
@@ -51,7 +51,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'cardio',
-        name: 'Running',
+        exerciseName: 'Running',
         duration: 25,
         distance: 4,
       },
@@ -62,7 +62,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Bench Press',
+        exerciseName: 'Bench Press',
         duration: 20,
         weight: 285,
         reps: 10,
@@ -75,7 +75,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Bench Press',
+        exerciseName: 'Bench Press',
         duration: 20,
         weight: 300,
         reps: 10,
@@ -88,7 +88,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Quad Press',
+        exerciseName: 'Quad Press',
         duration: 30,
         weight: 300,
         reps: 10,
@@ -101,7 +101,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Bench Press',
+        exerciseName: 'Bench Press',
         duration: 20,
         weight: 300,
         reps: 10,
@@ -114,7 +114,7 @@ let workoutSeed = [
     exercises: [
       {
         workoutType: 'resistance',
-        name: 'Military Press',
+        exerciseName: 'Military Press',
         duration: 20,
         weight: 300,
         reps: 10,
