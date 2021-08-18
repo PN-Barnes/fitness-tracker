@@ -65,11 +65,14 @@ app.post('/api/workouts', (req, res) => {
 });
 
 app.put('/api/workouts/:id', (req, res) => {
+  console.log('API workouts route hit');
+  console.log(req.body);
   const body = req.body;
   if (body.workoutType === 'resistance') {
     Workout.updateOne(
       { _id: req.params.id },
       {
+        day: new Date(new Date().setDate(new Date().getDate())),
         exercises: [
           {
             workoutType: body.workoutType,
@@ -83,31 +86,41 @@ app.put('/api/workouts/:id', (req, res) => {
       }
     )
       .then((exercise) => {
-        res.json(exercise, { message: 'Succesful update' });
+        console.log(Workout.exercises);
+        console.log('Exercise Successful Resistance');
+        res.status(200).json({ message: 'Succesful update' });
       })
       .catch((err) => {
-        res.json(err);
+        console.log('Resistance Fail');
+        res.status(500).json(err);
       });
   } else {
     Workout.updateOne(
       { _id: req.params.id },
       {
-        $set: {
-          workoutType: body.workoutType,
-          exerciseName: body.exerciseName,
-          duration: body.duration,
-          distance: body.distance,
-        },
+        day: new Date(new Date().setDate(new Date().getDate())),
+        exercises: [
+          {
+            workoutType: body.workoutType,
+            exerciseName: body.exerciseName,
+            distance: body.distance,
+            duration: body.duration,
+          },
+        ],
+        totalDuration: body.duration,
       }
     )
       .then((exercise) => {
-        res.json(exercise, { message: 'Succesful update' });
+        console.log(Workout.exercises);
+        console.log('Exercise Successful Cardio');
+        res.status(200).json({ message: 'Succesful update' });
       })
       .catch((err) => {
-        res.json(err);
+        console.log('Cardio fail');
+        console.log(err);
+        res.status(500).json(err);
       });
   }
-  res.json({ message: 'successful Put route' });
 });
 
 app.delete('/api/workouts/:id', (req, res) => {
