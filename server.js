@@ -20,6 +20,9 @@ mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost/fitnessTracker',
   {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   }
 );
 
@@ -47,7 +50,8 @@ app.get('/api/workouts/range', (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      res.json(data);
+      console.log(data);
+      res.status(200).json(data);
     }
   })
     .sort({ day: -1 })
