@@ -1,61 +1,29 @@
-# Unit 17 NoSQL Homework: Workout Tracker
+# Fitness Tracker
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+## Introduction
 
-## User Story
+This Application is meant for people who wish to track their weekly fitness goals, and see how much work they have been putting in. The Application is able to get and track your workouts and give you weekly data tailored from your workouts to give information such as weight for the week, exercises performed and Which days these were performed.
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+## Description
 
-## Business Context
+This application was built using mongodb along with mongoose to run the connection to the databse. It also uses REST api functionality to connect the server with the database and serve the user their desired data. All backend code was hand written by myself while front end functionality belongs to trilogy education services.
 
-A consumer will reach their fitness goals more quickly when they track their workout progress.
+## Installation
 
-## Acceptance Criteria
+To run this application, you will need to download the files from github in order to have the base application. From there, open up your terminal and navigate to the directory where these files are located and run an `npm i` to install necessary json packages for full functionality of the application. Once that is complete, to run it on your local machine, type the command `node server.js` and visit the localhost to see the application.
 
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
+[express](https://www.npmjs.com/package/express)
 
-The user should be able to:
+[Visual Studio Code](https://code.visualstudio.com/)
 
-  * Add exercises to the most recent workout plan.
+[Github](https://github.com/)
 
-  * Add new exercises to a new workout plan.
+[git](https://git-scm.com/downloads)
 
-  * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
+## Feedback
 
-  * View the total duration of each workout from the past seven workouts on the `stats` page.
+If you would like to leave any feedback, reach out to me through any of the contact links listed within the page. My contact information will be listed under the "Contact" tab.
 
-> **Important:** Look into using a MongoDB aggregate function to dynamically add up and return the total duration for each workout. Check out the [MongoDB documentation on the $addFields](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/), the [MongoDB documentation on the $sum operator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/), and the [Mongoose documentation on aggregate functions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate) to learn how it can be accomplished.
+[LinkedIn](https://www.linkedin.com/feed/)
 
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
-
-  * [Set Up MongoDB Atlas](../student-resources/deployment/deploy-guide/MongoAtlas-Setup.md)
-
-  * [Deploy with Heroku and MongoDB Atlas](../student-resources/deployment/deploy-guide/MongoAtlas-Deploy.md)
-
-## Commit Early and Often
-
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for the following two reasons:
-
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills.
-
-2. Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
-
-Follow these guidelines for committing:
-
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
-
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
-
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We want you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the GitHub repository
+[GitHub](https://github.com/PN-Barnes)
