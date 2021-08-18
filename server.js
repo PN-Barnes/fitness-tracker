@@ -87,6 +87,7 @@ app.put('/api/workouts/:id', (req, res) => {
             sets: body.sets,
           },
         ],
+        totalDuration: body.duration,
       }
     )
       .then((exercise) => {

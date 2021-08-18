@@ -24,10 +24,12 @@ function generatePalette() {
 function populateChart(data) {
   console.log(data);
   let durations = data.map(({ totalDuration }) => totalDuration);
+  console.log('durations', durations);
   let pounds = calculateTotalWeight(data);
   let workouts = workoutNames(data);
   const colors = generatePalette();
-
+  console.log('workouts', workouts);
+  console.log('pounds', pounds);
   let line = document.querySelector('#canvas').getContext('2d');
   let bar = document.querySelector('#canvas2').getContext('2d');
   let pie = document.querySelector('#canvas3').getContext('2d');
@@ -47,6 +49,7 @@ function populateChart(data) {
     const date = new Date(day);
     return daysOfWeek[date.getDay()];
   });
+  console.log('labels', labels);
 
   let lineChart = new Chart(line, {
     type: 'line',
@@ -197,7 +200,7 @@ function workoutNames(data) {
 
   data.forEach((workout) => {
     workout.exercises.forEach((exercise) => {
-      workouts.push(exercise.name);
+      workouts.push(exercise.exerciseName);
     });
   });
 
