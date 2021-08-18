@@ -181,13 +181,16 @@ function calculateTotalWeight(data) {
   let totals = [];
 
   data.forEach((workout) => {
-    const workoutTotal = workout.exercises.reduce((total, { type, weight }) => {
-      if (type === 'resistance') {
-        return total + weight;
-      } else {
-        return total;
-      }
-    }, 0);
+    const workoutTotal = workout.exercises.reduce(
+      (total, { workoutType, weight }) => {
+        if (workoutType === 'resistance') {
+          return total + weight;
+        } else {
+          return total;
+        }
+      },
+      0
+    );
 
     totals.push(workoutTotal);
   });

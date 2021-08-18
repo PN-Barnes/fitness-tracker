@@ -50,8 +50,21 @@ app.get('/api/workouts/range', (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      console.log(data);
-      res.status(200).json(data);
+      const updatedData = data.map((workout) => {
+        const totalDuration = workout.exercises.reduce(
+          (sum, exercise) => sum + exercise.duration,
+          0
+        );
+        return {
+          _id: workout._id,
+          day: workout.day,
+          exercises: workout.exercises,
+          totalDuration,
+        };
+      });
+      console.log(JSON.stringify(data, null, 2));
+
+      res.status(200).json(updatedData);
     }
   })
     .sort({ day: -1 })
